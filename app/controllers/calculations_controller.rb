@@ -10,7 +10,7 @@ class CalculationsController < ApplicationController
     # The special word the user input is in the string @special_word.
     # ================================================================================
 
-    text_split_into_array = @text.split
+    text_split_into_array = @text.downcase.split
 
     @word_count = text_split_into_array.length
 
@@ -18,7 +18,7 @@ class CalculationsController < ApplicationController
 
     @character_count_without_spaces = @text.size - @text.scan(/\s+/).size
 
-    @occurrences = text_split_into_array.count(@special_word)
+    @occurrences = text_split_into_array.count(@special_word.downcase)
 
     # ================================================================================
     # Your code goes above.
