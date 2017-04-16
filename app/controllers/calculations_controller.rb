@@ -92,6 +92,15 @@ class CalculationsController < ApplicationController
       arr.sum/@count
     end
 
+    def mode(array)
+      hash = Hash.new(0)
+      array.each do |i|
+        hash[i]+=1
+      end
+      max = hash.values.max
+      hash.select { |_,cnt| cnt == max }.keys
+    end
+
     @sorted_numbers = sorted
 
     @count = len
@@ -112,7 +121,7 @@ class CalculationsController < ApplicationController
 
     @standard_deviation = Math.sqrt(@variance)
 
-    @mode = "Replace this string with your answer."
+    @mode = mode(@numbers)
 
     # ================================================================================
     # Your code goes above.
