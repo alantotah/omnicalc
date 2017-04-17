@@ -10,7 +10,7 @@ class CalculationsController < ApplicationController
     # The special word the user input is in the string @special_word.
     # ================================================================================
 
-    text_split_into_array = @text.downcase.split
+    text_split_into_array = @text.gsub(/[^a-z0-9\s]/i, "").downcase.split
 
     @word_count = text_split_into_array.length
 
